@@ -1,0 +1,51 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+.navbar {
+  background-color: #192841 !important;
+}
+
+#logo {
+  color: #e3dac9;
+  float: left;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+
+#home-container {
+  margin-top: 1.5rem;
+}
+
+.custom-jumbotron {
+  background-image: asset-url('blog.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 70%; /* Fallback for browsers do NOT support vh unit */
+  min-height: 70vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.custom-text {
+  -webkit-text-stroke: 0.05rem #192841;
+  // color: #e3dac9;
+  color: #e3dac9;
+  font-weight: 500;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  background-color: lightgray;
+  flex: 1 0 auto;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
