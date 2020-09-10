@@ -1,7 +1,10 @@
 <h1 class="text-center mt-4 mb-4"><%= @user.username %>'s profile</h1>
 <%= gravatar_for @user, size: 120 %>
 <div class="text-center mt-4">
-  <%= link_to 'Edit profile', edit_user_path(@user), class: 'btn btn-outline-info' %>
+  <% if logged_in? && @user == current_user %>
+    <%= link_to 'Edit profile', edit_user_path(@user), class: 'btn btn-outline-info' %>
+    <%= link_to 'Delete profile', user_path(@user), class: 'btn btn-outline-danger', method: :delete, data: {confirm: 'Are you sure you want to delete your user?'} %>
+  <% end %>
 </div>
 <h3 class="text-center mt-4 mb-4">Articles</h3>
 <div class="flickr_pagination mb-4">

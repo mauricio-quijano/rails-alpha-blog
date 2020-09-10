@@ -22,7 +22,10 @@
           </div>
         </div>
         <div class="form-group row justify-content-center">
-          <%= f.submit(@user.new_record? ? 'Sign up' : 'Update account', class: 'btn btn-success btn-lg') %>
+          <%= f.submit(@user.new_record? ? 'Sign up' : 'Update account', class: 'btn btn-success btn-lg mr-4') %>
+          <% if logged_in? %>
+            <%= link_to 'Delete profile', user_path(@user), class: 'btn btn-danger btn-lg', method: :delete, data: {confirm: 'Are you sure you want to delete your user?'} %>
+          <% end %>
         </div>
       <% end %>
     </div>

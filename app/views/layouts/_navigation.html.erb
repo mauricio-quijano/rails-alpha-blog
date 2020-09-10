@@ -12,21 +12,38 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%= link_to 'View all articles', articles_path, class: 'dropdown-item' %>
+          <% if logged_in? %>
           <div class="dropdown-divider"></div>
-          <%= link_to 'Create new article', new_article_path, class: 'dropdown-item' %>
-          <a class="dropdown-item" href="#">View my articles</a>
+            <%= link_to 'Create new article', new_article_path, class: 'dropdown-item' %>
+            <%= link_to 'My articles', user_path(current_user), class: 'dropdown-item' %>
+          <% end %>
         </div>
       </li>
       <li class="nav-item">
         <%= link_to 'Bloggers', users_path, class: 'nav-link' %>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
     </form>
+
+    <% if logged_in? %>
+      <div class="navbar-nav">
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            [<%= current_user.username %>]
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarUserDropdown">
+            <%= link_to 'Edit profile', edit_user_path(current_user), class: 'dropdown-item' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to 'Log out', logout_path, class: 'dropdown-item', method: :delete %>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <%= link_to 'Log in', login_path, class: 'btn btn-outline-info ml-2 my-2 my-sm-0' %>
+      <%= link_to 'Sign up', signup_path, class: 'btn btn-outline-success ml-2 my-2 my-sm-0' %>
+    <% end %>
   </div>
 </nav>
