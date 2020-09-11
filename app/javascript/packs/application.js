@@ -16,3 +16,10 @@ require('channels');
 // const imagePath = (name) => images(name, true)
 
 import 'bootstrap';
+
+$(document).ready(function () {
+  // show the alert
+  setTimeout(function () {
+    $('.alert-dismissible').alert('close');
+  }, 2000);
+});
